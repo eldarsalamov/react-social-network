@@ -1,24 +1,30 @@
-import React from 'react';
-import s from './MyPosts.module.css';
-import Post from './Post/Post';
+import React from "react";
+import s from "./MyPosts.module.css";
+import Post from "./Post/Post";
 
 const MyPosts = () => {
+  let posts = [
+    { id: 1, message: "Привет всем", likesCount: 13 },
+    { id: 1, message: "Мой первый пост", likesCount: 42 },
+  ];
+  let postsElements = posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>)
   return (
-    <div>
-      My posts
+    <div className={s.postsBlock}>
+      <h3>My posts</h3>
       <div>
-        <textarea></textarea>
-        <button>Add post</button>
+        <div>
+          <textarea></textarea>
+        </div>
 
+        <div>
+          <button>Add post</button>
+        </div>
       </div>
       <div className={s.posts}>
-        <Post message="Привет всем" likesCount={23} />
-        <Post message="Мой первый пост" likesCount={5} />
-
+        {postsElements}
       </div>
     </div>
-  )
-
-}
+  );
+};
 
 export default MyPosts;
